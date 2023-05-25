@@ -12,9 +12,9 @@ export const Card = ({ name, url }) => {
 
   let { data, isPending, error } = useFetch(url)
 
-  const addFavorite = (pokemon) => {
-    dispatch(removePokemon(pokemon.name))
-    dispatch(addFavorite(pokemon))
+  const addFavoritePokemon = (pokemon) => {
+    console.log(pokemon)
+    dispatch(removePokemon(pokemon))
   }
 
   return (
@@ -22,7 +22,7 @@ export const Card = ({ name, url }) => {
       <CardContainer>
         <ContentText>
           <R_h2>{name}</R_h2>
-          <img className='pointer' onClick={() => addFavorite(data)} src={close} alt="" width="25px" />
+          <img className='pointer' onClick={() => addFavoritePokemon(name)} src={close} alt="" width="25px" />
         </ContentText>
         {!isPending ?
           <CardImage>

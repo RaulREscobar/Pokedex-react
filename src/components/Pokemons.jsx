@@ -51,7 +51,7 @@ export const Pokemons = () => {
       </nav>
       <ContainerWrap>
       {!pending ?
-        pokemons.results?.map((pokemon) => {
+        statePokemon.results?.map((pokemon) => {
           return <Card key={pokemon.name} name={pokemon.name} url={pokemon.url} />
         })
         : ""
