@@ -1,7 +1,7 @@
 import { keyframes, styled } from 'styled-components'
 
 
-const borderRadius = 14;
+const borderRadius = 5;
 const spin = keyframes`
 0% {
   transform: rotate(0deg);
@@ -14,20 +14,20 @@ const spin = keyframes`
 `
 
 const CardContainer = styled.div`
-    background: white;
+    background: #ecedef;
     width: 250px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     margin: auto;
-    border-radius: ${borderRadius + 5}px;
+    border-radius: ${borderRadius}px;
     position: relative;
     text-align: center;
     box-shadow: -1px 15px 30px -12px #ffff;
     color: black;
     gap: 0px;
-    min-height: 440px;
+    border: 10px solid #f8e462;
 
     &:hover{
     transform: translateX(10px) scale(1.05);
@@ -36,7 +36,7 @@ const CardContainer = styled.div`
     `
 const R_h2 = styled.h2`
     font-size: 24px;
-    padding: 10px 10px 0 10px;
+    margin: 0;
     `
 const Rh3 = styled.h3`
     text-align: center;
@@ -44,7 +44,6 @@ const Rh3 = styled.h3`
     `
 
 const CardImage = styled.div`
-    margin-bottom: 35px;
     border-top-left-radius: ${borderRadius}px;
     border-top-right-radius: ${borderRadius}px;
     `
@@ -54,9 +53,15 @@ const ContentText = styled.div`
     justify-content: center;
     gap: 5px;
     flex-wrap: wrap;
+    border: 1px solid;
+    width: 100%;
+    margin-bottom: 10px;
 `
 const Text = styled.p`
     color: "0000.7";
+    font-weight: 700;
+    margin: 0;
+;
     `
 
 const Container = styled.div`
