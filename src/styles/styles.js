@@ -50,12 +50,12 @@ const CardImage = styled.div`
 const ContentText = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     gap: 5px;
     flex-wrap: wrap;
     border: 1px solid;
-    width: 100%;
-    margin-bottom: 10px;
+    width: 90%;
+    margin: 10px;
 `
 const Text = styled.p`
     color: "0000.7";
