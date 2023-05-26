@@ -1,7 +1,26 @@
 import { keyframes, styled } from 'styled-components'
 
-
 const borderRadius = 5;
+
+function bgColor (prop){
+    switch (prop) {
+        case "normal":
+            return "black"
+        case "flying":
+            return "blue"
+        case "poison":
+            return "green"
+        case "ground":
+            return "red"
+        case "rock":
+            return "brown"
+        case "ghost":
+            return "violet"    
+        default:
+            return "white"
+    }
+}
+
 const spin = keyframes`
 0% {
   transform: rotate(0deg);
@@ -34,6 +53,7 @@ const CardContainer = styled.div`
     transition: all 0.3s ease;
     }
     `
+
 const R_h2 = styled.h2`
     font-size: 24px;
     margin: 0;
@@ -50,18 +70,18 @@ const CardImage = styled.div`
 const ContentText = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     gap: 5px;
     flex-wrap: wrap;
     border: 1px solid;
-    width: 100%;
-    margin-bottom: 10px;
+    width: 92%;
+    margin: 10px;
+    border-radius: 3px;
 `
 const Text = styled.p`
     color: "0000.7";
     font-weight: 700;
     margin: 0;
-;
     `
 
 const Container = styled.div`
@@ -76,7 +96,6 @@ const Spinner = styled.div`
 
     animation: ${spin} 1s ease infinite;
     `
-
 const ContainerWrap = styled.div`
     display:flex;
     flex-wrap: wrap;
@@ -84,5 +103,9 @@ const ContainerWrap = styled.div`
     justify-content: center;
     margin: 15px 0px;
     `
+const ContentImage = styled(ContentText)`
+    background-color: ${(props) => bgColor(props.type)};
+    
+    `
 
-export { CardContainer, Spinner, Container, Text, ContentText, CardImage, R_h2, Rh3, ContainerWrap }
+export { CardContainer, Spinner, Container, Text, ContentText, CardImage, R_h2, Rh3, ContainerWrap, ContentImage }

@@ -3,7 +3,7 @@ import { useFetch } from '../hooks/useFetch'
 import close from '../assets/close.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import { removePokemon } from '../actions/pokemonsActions'
-import { CardContainer, Container, ContentText, R_h2, Text, Spinner, CardImage } from '../styles/styles'
+import { CardContainer, Container, ContentText, R_h2, Text, Spinner, CardImage, ContentImage } from '../styles/styles'
 
 export const Card = ({ name, url }) => {
 
@@ -16,6 +16,8 @@ export const Card = ({ name, url }) => {
     dispatch(removePokemon(pokemon))
   }
 
+  console.log(data.types[0].type.name)
+
   return (
     <Container>
       <CardContainer>
@@ -25,7 +27,9 @@ export const Card = ({ name, url }) => {
         </ContentText>
         {!isPending ?
           <CardImage>
-            <img src={data.sprites.front_default} alt="" width="100px" height="150px" />
+            <ContentImage type={data.types[0].type.name}>
+              <img src={data.sprites.front_default} alt="" width="" height="" />
+            </ContentImage>
             <ContentText>
               <Text>Weight :</Text>
               <Text>{data.weight}</Text>
