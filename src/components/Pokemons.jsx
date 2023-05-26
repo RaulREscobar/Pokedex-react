@@ -15,6 +15,8 @@ export const Pokemons = () => {
   const [pokemons, setPokemons] = useState(statePokemon)
   const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=9")
   const [pending, setPending] = useState(true)
+  const [ search, setSearch] = useState("")
+  const fullPokemons = useFetch("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0").data
 
   let { data, isPending, error } = useFetch(url);
 
@@ -25,6 +27,17 @@ export const Pokemons = () => {
       setPokemons(data)
     }
   }, [data]) 
+
+  const handleChange = async (event) => {
+    setSearch(event.target.value)
+    const pokemonsFiltered = fullPokemons.results.filter((pokemon)=> {
+     return pokemon.name.includes(search)
+    })
+      dispatch(listarPokemons({
+        ...statePokemon,
+        results: pokemonsFiltered
+      }))
+  }
 
   function nextList(url) {
     dispatch(nextUrl(url))
@@ -42,6 +55,9 @@ export const Pokemons = () => {
         <button onClick={() => prevList(statePokemon.previous)}>Anterior</button>
         <button onClick={() => nextList(statePokemon.next)}>Siguientes</button>
       </ContainerWrap>
+      <ContainerWrap>
+      <input type="text" value={search} placeholder='Buscar Pokemon' onChange={handleChange} />
+      </ContainerWrap>
       <nav>
       {stateFavorite.lenght > 0 ? stateFavorite.map((pokemon) =>{
         console.log(pokemon.name)
@@ -51,8 +67,10 @@ export const Pokemons = () => {
       </nav>
       <ContainerWrap>
       {!pending ?
-        statePokemon.results?.map((pokemon) => {
-          return <Card key={pokemon.name} name={pokemon.name} url={pokemon.url} />
+        statePokemon.results?.map((pokemon, index) => {
+          if (index < 10 ) {
+            return <Card key={pokemon.name} name={pokemon.name} url={pokemon.url} /> 
+          }
         })
         : ""
         }

@@ -65,3 +65,15 @@ button:focus-visible {
 .pointer{
   cursor: pointer;
 }
+
+input {
+  width: 50vw;
+  border: 1px solid;
+  border-radius: 5px;
+  height: 2rem;
+  text-align: center;
+}
+input:focus {
+  box-shadow: 0 0 15px 5px #d5d5d5;
+	border: 2px solid #dadada;
+}

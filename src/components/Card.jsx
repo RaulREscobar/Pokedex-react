@@ -13,7 +13,6 @@ export const Card = ({ name, url }) => {
   let { data, isPending, error } = useFetch(url)
 
   const addFavoritePokemon = (pokemon) => {
-    console.log(pokemon)
     dispatch(removePokemon(pokemon))
   }
 
