@@ -93,6 +93,7 @@ const Rh3 = styled.h3`
 const CardImage = styled.div`
     border-top-left-radius: ${borderRadius}px;
     border-top-right-radius: ${borderRadius}px;
+    width: 100%;
     `
 const ContentText = styled.div`
     display: flex;
