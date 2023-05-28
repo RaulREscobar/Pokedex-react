@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useFetch } from '../hooks/useFetch'
 import close from '../assets/close.svg'
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,13 +10,19 @@ export const Card = ({ name, url }) => {
   const stateFavorite = useSelector(state => state.favorite)
   const dispatch = useDispatch()
 
+  const [type, setType] = useState("normal")
+
   let { data, isPending, error } = useFetch(url)
 
   const addFavoritePokemon = (pokemon) => {
     dispatch(removePokemon(pokemon))
   }
-
-  console.log(data.types[0].type.name)
+useEffect(()=>{
+  if(data){
+    setType(data.types[0].type.name)
+  }
+},[data])
+  
 
   return (
     <Container>
@@ -27,7 +33,7 @@ export const Card = ({ name, url }) => {
         </ContentText>
         {!isPending ?
           <CardImage>
-            <ContentImage type={data.types[0].type.name}>
+            <ContentImage type={type}>
               <img src={data.sprites.front_default} alt="" width="" height="" />
             </ContentImage>
             <ContentText>
