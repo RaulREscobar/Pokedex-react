@@ -99,7 +99,7 @@ const CardImage = styled.div`
 const ContentText = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     gap: 5px;
     flex-wrap: wrap;
     border: 1px solid;
