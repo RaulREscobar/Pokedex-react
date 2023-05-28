@@ -76,6 +76,7 @@ const CardContainer = styled.div`
     color: black;
     gap: 0px;
     border: 10px solid #f8e462;
+    min-height: 93%;
 
     &:hover{
     transform: translateX(10px) scale(1.05);
